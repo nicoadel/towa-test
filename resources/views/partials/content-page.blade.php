@@ -30,61 +30,63 @@ $dance_styles = $content['dance_styles'];
 <div class="container dancer-container">
     <div class="row">
         <div class="col-4">
-            <div class="dancer-card">
-                @if ($dancer_image)
-                <div class="dancer-card-image">
-                    {!! wp_get_attachment_image($dancer_image) !!}
-                </div>
-                @endif
-                <div class="dancer-card-textcontent">
-                    <div class="dancer-card-textcontent-name">
-                        @if ($group_dancer && $groupdancer_name)
-                            <h2>{!! $groupdancer_name !!}</h2>
-                        @elseif($dancers_name)
-                            <h2>{!! $dancers_name !!}</h2>
-                        @endif
+            <ul>
+                <li class="dancer-card">
+                    @if ($dancer_image)
+                    <div class="dancer-card-image">
+                        {!! wp_get_attachment_image($dancer_image) !!}
                     </div>
-                    <div class="dancer-card-textcontent-infos">
-
-                        @if ($dancer_mail)
-                        <div class="textcontent-infos-mail">
-                            <a href="mailto:{!! $dancer_mail !!}">Mail: {!! $dancer_mail !!}</a>
-                        </div>  
-                        @endif
-                        
-                        @if ($dancer_country)
-                        <div class="textcontent-infos-country">
-                            @foreach ($dancer_country as $country)
-                                @php $country_name = get_term($country)->name; @endphp
-                                <span>{!! $country_name !!}</span>
-                            @endforeach
+                    @endif
+                    <div class="dancer-card-textcontent">
+                        <div class="dancer-card-textcontent-name">
+                            @if ($group_dancer && $groupdancer_name)
+                                <h2>{!! $groupdancer_name !!}</h2>
+                            @elseif($dancers_name)
+                                <h2>{!! $dancers_name !!}</h2>
+                            @endif
                         </div>
-                        @endif
+                        <div class="dancer-card-textcontent-infos">
 
-                        @if ($group_dancer && $dancer_participants)
-                        <div class="textcontent-infos-participants">
-                            <p>{!! $dancer_participants !!}</p>
+                            @if ($dancer_mail)
+                            <div class="textcontent-infos-mail">
+                                <a href="mailto:{!! $dancer_mail !!}">Mail: {!! $dancer_mail !!}</a>
+                            </div>  
+                            @endif
+                            
+                            @if ($dancer_country)
+                            <div class="textcontent-infos-country">
+                                @foreach ($dancer_country as $country)
+                                    @php $country_name = get_term($country)->name; @endphp
+                                    <span>{!! $country_name !!}</span>
+                                @endforeach
+                            </div>
+                            @endif
+
+                            @if ($group_dancer && $dancer_participants)
+                            <div class="textcontent-infos-participants">
+                                <p>{!! $dancer_participants !!}</p>
+                            </div>
+                            @endif
+
+                            @if ($dance_styles)
+                            <div class="textcontent-infos-dancestyles">
+                                @foreach ($dance_styles as $dance_style)
+
+                                @php
+                                //looping over the post relation and retrieving the post url and name
+                                    $dance_post = get_post($dance_style);
+                                    $post_title = $dance_post->post_title;
+                                @endphp
+
+                                <a href="{!! $dance_post->guid !!}">{!! $dance_post->post_name !!}</a>
+                            
+                                @endforeach
+                            </div>
+                            @endif
                         </div>
-                        @endif
-
-                        @if ($dance_styles)
-                        <div class="textcontent-infos-dancestyles">
-                            @foreach ($dance_styles as $dance_style)
-
-                            @php
-                            //looping over the post relation and retrieving the post url and name
-                                $dance_post = get_post($dance_style);
-                                $post_title = $dance_post->post_title;
-                            @endphp
-
-                            <a href="{!! $dance_post->guid !!}">{!! $dance_post->post_name !!}</a>
-                        
-                            @endforeach
-                        </div>
-                        @endif
                     </div>
-                </div>
-            </div>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
