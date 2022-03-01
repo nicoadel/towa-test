@@ -48,7 +48,7 @@ $dance_styles = $content['dance_styles'];
 
                         @if ($dancer_mail)
                         <div class="textcontent-infos-mail">
-                            <a href="mail:{!! $dancer_mail !!}">{!! $dancer_mail !!}</a>
+                            <a href="mailto:{!! $dancer_mail !!}">Mail: {!! $dancer_mail !!}</a>
                         </div>  
                         @endif
                         
