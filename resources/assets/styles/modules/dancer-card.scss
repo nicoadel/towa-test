@@ -30,9 +30,12 @@
 
       &-infos {
         .textcontent-infos {
+          margin-top: 20px;
+
           &-mail {
             display: flex;
             border-bottom: 1px solid bottom;
+            text-decoration: underline;
           }
 
           &-country {
@@ -46,11 +49,11 @@
             justify-content: flex-start;
 
             a {
-              color: #203239;
+              color: theme-color("link-color");
               transition: color ease-in-out 0.2s;
 
               &:hover {
-                color: #141e27;
+                color: theme-color("link-hover-color");
                 transition: color ease-in-out 0.2s;
                 text-decoration: none;
               }
