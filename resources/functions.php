@@ -91,34 +91,34 @@ Container::getInstance()
         ]);
     }, true);
 
-/* add custom post type for the dancers */
+/* add custom post type for the dancer style */
 
-function codex_dancer_init() {
+function codex_dancerstyle_init() {
     $labels = array(
-        'name'                  => _x( 'Dancers', 'Post type general name', 'textdomain' ),
-        'singular_name'         => _x( 'Dancer', 'Post type singular name', 'textdomain' ),
-        'menu_name'             => _x( 'Dancers', 'Admin Menu text', 'textdomain' ),
-        'name_admin_bar'        => _x( 'Dancer', 'Add New on Toolbar', 'textdomain' ),
+        'name'                  => _x( 'Dance Styles', 'Post type general name', 'textdomain' ),
+        'singular_name'         => _x( 'Dance Style', 'Post type singular name', 'textdomain' ),
+        'menu_name'             => _x( 'Dancer Style', 'Admin Menu text', 'textdomain' ),
+        'name_admin_bar'        => _x( 'Dancer Style', 'Add New on Toolbar', 'textdomain' ),
         'add_new'               => __( 'Add New', 'textdomain' ),
-        'add_new_item'          => __( 'Add New Dancer', 'textdomain' ),
-        'new_item'              => __( 'New Dancer', 'textdomain' ),
-        'edit_item'             => __( 'Edit Dancer', 'textdomain' ),
-        'view_item'             => __( 'View Dancer', 'textdomain' ),
-        'all_items'             => __( 'All Dancer', 'textdomain' ),
-        'search_items'          => __( 'Search Dancer', 'textdomain' ),
-        'parent_item_colon'     => __( 'Parent Dancer:', 'textdomain' ),
-        'not_found'             => __( 'No Dancer found.', 'textdomain' ),
-        'not_found_in_trash'    => __( 'No Dancer found in Trash.', 'textdomain' ),
-        'featured_image'        => _x( 'Dancer Cover Image', 'Overrides the “Featured Image” phrase for this post type. Added in 4.3', 'textdomain' ),
+        'add_new_item'          => __( 'Add New Dancer Style', 'textdomain' ),
+        'new_item'              => __( 'New Dancer Style', 'textdomain' ),
+        'edit_item'             => __( 'Edit Dancer Style', 'textdomain' ),
+        'view_item'             => __( 'View Dancer Style', 'textdomain' ),
+        'all_items'             => __( 'All Dancer Style', 'textdomain' ),
+        'search_items'          => __( 'Search Dancer Style' , 'textdomain' ),
+        'parent_item_colon'     => __( 'Parent Dancer Style:', 'textdomain' ),
+        'not_found'             => __( 'No Dancer Style found.', 'textdomain' ),
+        'not_found_in_trash'    => __( 'No Dancer Style found in Trash.', 'textdomain' ),
+        'featured_image'        => _x( 'Dancer Style Cover Image', 'Overrides the “Featured Image” phrase for this post type. Added in 4.3', 'textdomain' ),
         'set_featured_image'    => _x( 'Set cover image', 'Overrides the “Set featured image” phrase for this post type. Added in 4.3', 'textdomain' ),
         'remove_featured_image' => _x( 'Remove cover image', 'Overrides the “Remove featured image” phrase for this post type. Added in 4.3', 'textdomain' ),
         'use_featured_image'    => _x( 'Use as cover image', 'Overrides the “Use as featured image” phrase for this post type. Added in 4.3', 'textdomain' ),
-        'archives'              => _x( 'Dancer archives', 'The post type archive label used in nav menus. Default “Post Archives”. Added in 4.4', 'textdomain' ),
-        'insert_into_item'      => _x( 'Insert into Dancer', 'Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post). Added in 4.4', 'textdomain' ),
-        'uploaded_to_this_item' => _x( 'Uploaded to this Dancer', 'Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used when viewing media attached to a post). Added in 4.4', 'textdomain' ),
-        'filter_items_list'     => _x( 'Filter Dancers list', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4', 'textdomain' ),
-        'items_list_navigation' => _x( 'Dancers list navigation', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4', 'textdomain' ),
-        'items_list'            => _x( 'Dancers list', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4', 'textdomain' ),
+        'archives'              => _x( 'Dancer Style archives', 'The post type archive label used in nav menus. Default “Post Archives”. Added in 4.4', 'textdomain' ),
+        'insert_into_item'      => _x( 'Insert into Dancer Style', 'Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post). Added in 4.4', 'textdomain' ),
+        'uploaded_to_this_item' => _x( 'Uploaded to this Dancer Style', 'Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used when viewing media attached to a post). Added in 4.4', 'textdomain' ),
+        'filter_items_list'     => _x( 'Filter Dancers Style list', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4', 'textdomain' ),
+        'items_list_navigation' => _x( 'Dancers Style list navigation', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4', 'textdomain' ),
+        'items_list'            => _x( 'Dancers Style list', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4', 'textdomain' ),
     );
  
     $args = array(
@@ -129,7 +129,7 @@ function codex_dancer_init() {
         'show_in_menu'       => true,
         'show_in_rest'       => true,
         'query_var'          => true,
-        'rewrite'            => array( 'slug' => 'dancer' ),
+        'rewrite'            => array( 'slug' => 'dancer-style' ),
         'capability_type'    => 'post',
         'has_archive'        => true,
         'hierarchical'       => false,
@@ -137,7 +137,7 @@ function codex_dancer_init() {
         'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ),
     );
  
-    register_post_type( 'dancer', $args );
+    register_post_type( 'dancer-style', $args );
 }
  
-add_action( 'init', 'codex_dancer_init' );
+add_action( 'init', 'codex_dancerstyle_init' );
