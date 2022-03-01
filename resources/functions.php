@@ -90,3 +90,54 @@ Container::getInstance()
             'view' => require dirname(__DIR__).'/config/view.php',
         ]);
     }, true);
+
+/* add custom post type for the dancers */
+
+function codex_dancer_init() {
+    $labels = array(
+        'name'                  => _x( 'Dancers', 'Post type general name', 'textdomain' ),
+        'singular_name'         => _x( 'Dancer', 'Post type singular name', 'textdomain' ),
+        'menu_name'             => _x( 'Dancers', 'Admin Menu text', 'textdomain' ),
+        'name_admin_bar'        => _x( 'Dancer', 'Add New on Toolbar', 'textdomain' ),
+        'add_new'               => __( 'Add New', 'textdomain' ),
+        'add_new_item'          => __( 'Add New Dancer', 'textdomain' ),
+        'new_item'              => __( 'New Dancer', 'textdomain' ),
+        'edit_item'             => __( 'Edit Dancer', 'textdomain' ),
+        'view_item'             => __( 'View Dancer', 'textdomain' ),
+        'all_items'             => __( 'All Dancer', 'textdomain' ),
+        'search_items'          => __( 'Search Dancer', 'textdomain' ),
+        'parent_item_colon'     => __( 'Parent Dancer:', 'textdomain' ),
+        'not_found'             => __( 'No Dancer found.', 'textdomain' ),
+        'not_found_in_trash'    => __( 'No Dancer found in Trash.', 'textdomain' ),
+        'featured_image'        => _x( 'Dancer Cover Image', 'Overrides the “Featured Image” phrase for this post type. Added in 4.3', 'textdomain' ),
+        'set_featured_image'    => _x( 'Set cover image', 'Overrides the “Set featured image” phrase for this post type. Added in 4.3', 'textdomain' ),
+        'remove_featured_image' => _x( 'Remove cover image', 'Overrides the “Remove featured image” phrase for this post type. Added in 4.3', 'textdomain' ),
+        'use_featured_image'    => _x( 'Use as cover image', 'Overrides the “Use as featured image” phrase for this post type. Added in 4.3', 'textdomain' ),
+        'archives'              => _x( 'Dancer archives', 'The post type archive label used in nav menus. Default “Post Archives”. Added in 4.4', 'textdomain' ),
+        'insert_into_item'      => _x( 'Insert into Dancer', 'Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post). Added in 4.4', 'textdomain' ),
+        'uploaded_to_this_item' => _x( 'Uploaded to this Dancer', 'Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used when viewing media attached to a post). Added in 4.4', 'textdomain' ),
+        'filter_items_list'     => _x( 'Filter Dancers list', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4', 'textdomain' ),
+        'items_list_navigation' => _x( 'Dancers list navigation', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4', 'textdomain' ),
+        'items_list'            => _x( 'Dancers list', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4', 'textdomain' ),
+    );
+ 
+    $args = array(
+        'labels'             => $labels,
+        'public'             => true,
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'show_in_rest'       => true,
+        'query_var'          => true,
+        'rewrite'            => array( 'slug' => 'dancer' ),
+        'capability_type'    => 'post',
+        'has_archive'        => true,
+        'hierarchical'       => false,
+        'menu_position'      => null,
+        'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ),
+    );
+ 
+    register_post_type( 'dancer', $args );
+}
+ 
+add_action( 'init', 'codex_dancer_init' );
