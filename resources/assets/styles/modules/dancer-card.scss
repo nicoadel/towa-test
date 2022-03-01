@@ -1,0 +1,26 @@
+.dancer-container {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  background-color: theme-color("secondary");
+  padding: 30px 30px;
+
+  .dancer-card {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    background-color: theme-color("primary");
+
+    &.-image {
+      width: 100%;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    &.-textcontent {
+      padding: 25px 15px;
+    }
+  }
+}
